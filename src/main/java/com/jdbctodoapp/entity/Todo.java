@@ -1,4 +1,4 @@
-package org.example.jdbctodoapp.entity;
+package com.jdbctodoapp.entity;
 
 import lombok.*;
 

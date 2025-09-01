@@ -4,6 +4,7 @@ import com.jdbctodoapp.entity.Todo;
 import com.jdbctodoapp.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +18,18 @@ public class TodoService {
     }
 
     public List<Todo> getAll(Boolean isCompleted) {
-        return repository.findAll(isCompleted);
+        if (isCompleted != null) {
+            return repository.findByCompleted(isCompleted);
+        }
+        return repository.findAll();
     }
 
     public Optional<Todo> getById(int id) {
         return repository.findById(id);
     }
 
-    public int addTodo(Todo todo) {
+    public Todo addTodo(Todo todo) {
+        todo.setCreatedAt(Instant.now());
         return repository.save(todo);
     }
 
@@ -32,7 +37,7 @@ public class TodoService {
         return repository.update(todo);
     }
 
-    public int delete(Long id) {
+    public int delete(int id) {
         return repository.deleteById(id);
     }
 }

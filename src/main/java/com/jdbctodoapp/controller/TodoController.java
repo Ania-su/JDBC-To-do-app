@@ -27,9 +27,8 @@ public class TodoController {
     }
 
     @PostMapping
-    public String create(@RequestBody Todo todo) {
-        service.addTodo(todo);
-        return "Todo created";
+    public Todo create(@RequestBody Todo todo) {
+        return service.addTodo(todo);
     }
 
     @PutMapping("/{id}")
@@ -40,7 +39,7 @@ public class TodoController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
+    public String delete(@PathVariable int id) {
         service.delete(id);
         return "Todo deleted";
     }

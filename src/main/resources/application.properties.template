@@ -1,0 +1,4 @@
+spring.application.name=JDBC-To-do-app
+spring.datasource.url=jdbc:postgresql://localhost:5432/<database_name>
+spring.datasource.username= <username>
+spring.datasource.password= <password>
